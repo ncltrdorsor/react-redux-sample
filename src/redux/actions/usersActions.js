@@ -17,3 +17,13 @@ export function fetchUsers(){
             })
     }
 }
+
+export function changeUsersProperty(field, value){
+    return function(dispatch){
+        dispatch({
+            type: "CHANGE_PROPERTY", 
+            field: field, 
+            value: value,
+        });
+    }
+}

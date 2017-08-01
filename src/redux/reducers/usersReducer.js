@@ -3,7 +3,8 @@ export default function reducer(state = {
     users: [],
     fetching: false,
     fetched: false,
-    error: null
+    error: null,
+    description: null
 }, action){
     switch(action.type){
         case "FETCH_USERS": {
@@ -27,6 +28,13 @@ export default function reducer(state = {
                 ...state,
                 fetching: false,
                 error: action.payload
+            }
+        }
+
+        case "CHANGE_PROPERTY":{
+            return {
+                ...state,
+                [action.field]: action.value
             }
         }
     }

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux"
 
-import { fetchUsers } from "redux/actions/usersActions";
+import { fetchUsers, changeUsersProperty } from "redux/actions/usersActions";
 
 //USE OF DECORATORS IS EXPERIMENTAL
 @connect((store) => {
     return {
-        users: store.users.users
+        users: store.users.users,
+        description: store.users.description || ""
     }
 })
 
@@ -15,8 +16,11 @@ export default class MainContent extends Component{
         this.props.dispatch(fetchUsers());
     }
 
-    render(){
+    _onInputCHange = (event) => {
+        this.props.dispatch(changeUsersProperty(event.target.name, event.target.value));
+    }
 
+    render(){
         var fillUsersNodes = function(){
             
             var userNodes = users.map((user)=> {
@@ -30,13 +34,22 @@ export default class MainContent extends Component{
             });
 
             return userNodes;
-        }        
+        }
+        
         var users = this.props.users;
-        console.log(users);
 
         return(
             <div>
                 Hello World ....
+                <hr/>
+                <div>
+                    <label htmlFor="description">This one works</label>
+                    <input type="text" name="description" onChange={this._onInputCHange} value={this.props.description}/>
+                </div>
+                <div>
+                    <label htmlFor="description">This one doesnt</label>
+                    <input type="text" name="description" value={this.props.description}/>
+                </div>
                 <hr/>
                 {fillUsersNodes()}
             </div>
