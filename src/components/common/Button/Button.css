@@ -1,0 +1,11 @@
+.root{
+    position: relative;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+    border: none;
+}

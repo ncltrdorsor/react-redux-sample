@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux"
-
+import ButtonCustom from 'Components/Common/Button/Button.js';
 import { fetchUsers, changeUsersProperty } from "redux/actions/usersActions";
+
 
 //USE OF DECORATORS IS EXPERIMENTAL
 @connect((store) => {
@@ -42,6 +43,9 @@ export default class MainContent extends Component{
             <div>
                 Hello World ....
                 <hr/>
+                <div>
+                    <ButtonCustom>HOLA</ButtonCustom>
+                </div>
                 <div>
                     <label htmlFor="description">This one works</label>
                     <input type="text" name="description" onChange={this._onInputCHange} value={this.props.description}/>
